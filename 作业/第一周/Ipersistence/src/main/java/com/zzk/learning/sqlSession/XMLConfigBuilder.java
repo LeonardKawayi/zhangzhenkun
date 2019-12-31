@@ -22,8 +22,8 @@ public class XMLConfigBuilder {
 
     private Configuration configuration;
 
-    public XMLConfigBuilder(Configuration configuration) {
-        this.configuration = configuration;
+    public XMLConfigBuilder() {
+        this.configuration = new Configuration();
     }
 
     public Configuration parseConfiguration (InputStream inputStream)
@@ -53,11 +53,11 @@ public class XMLConfigBuilder {
         // mapper部分
         List<Element> mapperList = rootElement.selectNodes("//mapper");
 
-        XMLMapperBuilder mapperBuilder = new XMLMapperBuilder(configuration);
 
         for (Element element : mapperList) {
             String path = element.attributeValue("resource");
-            InputStream resourceAsStream = Resources.getResourceAsStream(path);
+            InputStream resourceAsStream = Resources.getResourceAsSteam(path);
+            XMLMapperBuilder mapperBuilder = new XMLMapperBuilder(configuration);
             mapperBuilder.parse(resourceAsStream);
         }
 

@@ -23,13 +23,11 @@ import com.zzk.learning.util.ParameterMappingTokenHandler;
  */
 public class SimpleExecutor implements Executor {
 
-    private Connection connection = null;
-
     @Override
     public <E> List<E> query(Configuration configuration, MappedStatement mappedStatement, Object[] param)
             throws Exception {
 
-        connection = configuration.getDataSource().getConnection();
+        Connection connection = configuration.getDataSource().getConnection();
 
         /**
          * 方法描述  select * from user where id = #{id} and username = #{username}

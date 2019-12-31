@@ -1,0 +1,19 @@
+<mapper namespace="com.zzk.learning.dao.UserDao">
+
+    <!--sql的唯一标识：namespace.id来组成 ： statementId-->
+    <select id="findAll" resultType="com.zzk.learning.entity.User" >
+        select * from user
+    </select>
+
+
+    <!--
+        User user = new User()
+        user.setId(1);
+        user.setUsername("zhangsan")
+    -->
+    <select id="findByCondition" resultType="com.zzk.learning.entity.User" paramterType="com.zzk.learning.entity.User">
+        select * from user where id = #{id} and username = #{username}
+    </select>
+
+
+</mapper>

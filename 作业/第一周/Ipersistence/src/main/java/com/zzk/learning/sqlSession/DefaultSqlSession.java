@@ -23,11 +23,9 @@ public class DefaultSqlSession implements SqlSession {
         this.configuration = configuration;
     }
 
-    //处理器
-    private Executor simpleExcutor = new SimpleExecutor();
-
     @Override
     public <E> List<E> selectList(String statementId, Object... params) throws Exception {
+        Executor simpleExcutor = new SimpleExecutor();
         MappedStatement mappedStatement = configuration.getMappedStatementMap().get(statementId);
         List<E> query = simpleExcutor.query(configuration, mappedStatement, params);
 
